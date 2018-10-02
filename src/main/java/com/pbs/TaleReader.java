@@ -11,7 +11,9 @@ public class TaleReader {
 
         Map<String, Integer> wordOccurrencesMap = new HashMap<>();
 
-        inputStream.flatMap(i -> Arrays.stream(i.split("\\s+"))).forEach(word -> {
+        inputStream.flatMap(i -> Arrays.stream(i.split("\\s+")))
+                .map(String::toLowerCase)
+                .forEach(word -> {
             if (wordOccurrencesMap.containsKey(word)) {
                 wordOccurrencesMap.put(word, wordOccurrencesMap.get(word) + 1);
             } else {
